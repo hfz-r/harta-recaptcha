@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<package> 
+  <metadata> 
+	<id>harta-recaptcha</id> 
+    <version>1.0.1</version> 
+    <authors>hfz-r</authors>
+    <description>A ASP.NET wrapper for Google reCAPTCHA V2</description> 
+  </metadata> 
+</package>
