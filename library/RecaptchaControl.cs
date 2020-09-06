@@ -106,7 +106,8 @@ namespace Recaptcha
             if (string.IsNullOrEmpty(this.HiddenFieldControlId))
                 throw new HttpException(string.Format("You must provide a value for the HiddenFieldControlId property for the Recaptcha control with ID '{0}'.", this.ID));
 
-            if (!(this.FindControl(this.HiddenFieldControlId) is HiddenField hf))
+            HiddenField hf = this.FindControl(this.HiddenFieldControlId) as HiddenField;
+            if (hf == null)
                 throw new HttpException(string.Format("The Recaptcha control with ID '{0}' could not find a HiddenField control with the ID '{1}'.", this.ID, this.HiddenFieldControlId));
 
             return hf;
@@ -138,19 +139,19 @@ namespace Recaptcha
             if (this.Page != null && !this.Page.ClientScript.IsClientScriptIncludeRegistered("reCAPTCHA"))
                 this.Page.ClientScript.RegisterClientScriptInclude("reCAPTCHA", Page.ClientScript.GetWebResourceUrl(GetType(), "Recaptcha.recaptcha-script.js"));
 
-            this.Page?.ClientScript.RegisterStartupScript(GetType(), Guid.NewGuid().ToString(), string.Format("var state = '{0}';", GetHiddenFieldControl().ClientID), true);
-            this.Page?.ClientScript.RegisterStartupScript(GetType(), Guid.NewGuid().ToString(), string.Format("updateBrowserState('{0}');", GetHiddenFieldControl().ClientID), true);
+            this.Page.ClientScript.RegisterStartupScript(GetType(), Guid.NewGuid().ToString(), string.Format("var state = '{0}';", GetHiddenFieldControl().ClientID), true);
+            this.Page.ClientScript.RegisterStartupScript(GetType(), Guid.NewGuid().ToString(), string.Format("updateBrowserState('{0}');", GetHiddenFieldControl().ClientID), true);
         }
 
         protected override void Render(HtmlTextWriter writer)
         {
-            if ((GetHiddenFieldControl().Value != "offline") && _skipRecaptcha)
+            if (_skipRecaptcha)
             {
-                RenderContents(writer);
+                //writer.WriteLine("reCAPTCHA validation is skipped. Set SkipRecaptcha property to false to enable validation.");
             }
             else
             {
-                //writer.WriteLine("reCAPTCHA validation is skipped. Set SkipRecaptcha property to false to enable validation.");
+                RenderContents(writer);
             }
         }
 

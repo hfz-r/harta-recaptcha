@@ -2,8 +2,9 @@
 <package> 
   <metadata> 
 	<id>harta-recaptcha</id> 
-    <version>1.0.1</version> 
+    <version>1.0.3.0</version> 
     <authors>hfz-r</authors>
-    <description>A ASP.NET wrapper for Google reCAPTCHA V2</description> 
+    <description>Google reCAPTCHA V2 wrapper for the ASP.NET WebForm with online/offline detection capabilities.</description> 
+	<repository type="git" url="https://github.com/hfz-r/harta-recaptcha.git" />
   </metadata> 
 </package>

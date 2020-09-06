@@ -2,5 +2,5 @@
 
 copy "..\library\bin\Release\*" ".\recaptcha\lib\.NetFramework 4.0"
 
-NuGet.exe pack ".\recaptcha\recaptcha.nuspec" /o ".\packages\ "
+nuget.exe pack ".\recaptcha\recaptcha.nuspec" -OutputDirectory ".\packages\ "
 
