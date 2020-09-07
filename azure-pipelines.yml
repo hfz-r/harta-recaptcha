@@ -21,7 +21,7 @@ steps:
   displayName: 'Copy packages to artifacts staging directory' 
   inputs:
     Contents: '**\bin\**'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)\lib'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)\lib\.NetFramework 4.0'
     flattenFolders: true
 
 - task: CopyFiles@2
