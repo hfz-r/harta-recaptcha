@@ -14,8 +14,8 @@ steps:
 
 - task: NuGetCommand@2
   inputs:
-    restoreSolution: 'library/*.config'
-    restoreDirectory: '../packages'
+    restoreSolution: 'library\*.config'
+    restoreDirectory: '..\packages'
 
 - task: MSBuild@1
   inputs:
@@ -25,11 +25,13 @@ steps:
 
 - task: CopyFiles@2
   inputs:
-    Contents: 'library/bin/Release/**'
-    TargetFolder: $(Build.ArtifactStagingDirectory)
+    Contents: |
+      **\bin\**
+      nuget\**\*.nuspec
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    flattenFolders: true
 
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'package'
-    publishLocation: 'Container'
