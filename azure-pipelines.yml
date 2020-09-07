@@ -14,7 +14,7 @@ steps:
 - task: NuGetCommand@2
   inputs:
     restoreSolution: 'library/*.config'
-    restoreDirectory: 'packages'
+    restoreDirectory: 'packages/'
 
 - task: MSBuild@1
   inputs:
