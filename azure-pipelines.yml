@@ -13,5 +13,5 @@ steps:
   inputs:
     solution: $(solution)
     platform: $(buildPlatform)
-    msbuildArguments: $(buildConfiguration)
+    configuration: $(buildConfiguration)
     restoreNugetPackages: true
