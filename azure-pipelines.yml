@@ -3,12 +3,6 @@ trigger:
 
 pool: MyAgent
 
-# todo: use variables to assign value
-variables:
-  solution: 'library/*.*proj'
-  buildPlatform: 'AnyCPU'
-  buildConfiguration: 'Release'
-
 steps:
 - task: NuGetToolInstaller@0
 
@@ -19,19 +13,26 @@ steps:
 
 - task: MSBuild@1
   inputs:
-    solution: $(solution)
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    solution: 'library/*.*proj'
+    platform: 'AnyCPU'
+    configuration: 'Release'
 
 - task: CopyFiles@2
+  displayName: 'Copy packages to artifacts staging directory' 
   inputs:
-    Contents: |
-      **\bin\**
-      nuget\**\*.nuspec
+    Contents: '**\bin\**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)\lib'
+    flattenFolders: true
+
+- task: CopyFiles@2
+  displayName: 'Copy nuspec to artifacts staging directory' 
+  inputs:
+    Contents: 'nuget\**\*.nuspec'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
     flattenFolders: true
 
 - task: PublishBuildArtifacts@1
+  displayName: 'Publish artifacts'
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'package'
+    ArtifactName: 'harta-recaptcha'
