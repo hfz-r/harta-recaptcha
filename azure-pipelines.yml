@@ -3,16 +3,15 @@ trigger:
 
 pool: MyAgent
 
+variables:
+  solution: 'library/*.*proj'
+  buildPlatform: 'AnyCPU'
+  buildConfiguration: 'Release'
+
 steps:
-- task: NuGetToolInstaller@0
-
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: 'library/*.config'
-    restoreDirectory: 'nuget/recaptcha/lib/.NetFramework 4.0/'
-
 - task: MSBuild@1
   inputs:
-    solution: 'library/*.*proj'
-    platform: 'AnyCPU'
-    configuration: 'Release'
+    solution: $(solution)
+    platform: $(buildPlatform)
+    msbuildArguments: $(buildConfiguration)
+    restoreNugetPackages: true
