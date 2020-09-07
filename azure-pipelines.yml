@@ -5,7 +5,7 @@ pool: MyAgent
 
 variables:
   solution: 'library/*.*proj'
-  buildPlatform: 'Any CPU'
+  buildPlatform: 'AnyCPU'
   buildConfiguration: 'Release'
 
 steps:
