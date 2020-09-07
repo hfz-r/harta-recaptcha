@@ -4,21 +4,14 @@ trigger:
 pool: MyAgent
 
 variables:
-  project: 'library/*.*proj'
-  projectPackage: 'library/*.config'
+  solution: 'library/*.*proj'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
 steps:
-- task: NuGetToolInstaller@0
-
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: $(projectPackage)
-
 - task: VSBuild@1
   inputs:
-    solution: '$(project)'
+    solution: '$(solution)'
     msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
