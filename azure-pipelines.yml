@@ -3,10 +3,15 @@ trigger:
 
 pool: MyAgent
 
+variables:
+  solution: 'library/*.*proj'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
 steps:
-- task: MSBuild@1
+- task: VSBuild@1
   inputs:
-    solution: 'library/*.*proj'
-    platform: 'AnyCPU'
-    configuration: 'Release'
-    msbuildArguments: '/t:Rebuild'
+    solution: '$(solution)'
+    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
