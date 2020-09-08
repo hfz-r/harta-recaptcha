@@ -1,6 +1,6 @@
 # Harta-Recaptcha
 
-[![nuget](https://img.shields.io/badge/nuget-v1.0.4-blue)](https://github.com/hfz-r/harta-recaptcha/releases)
+[![harta-recaptcha package in harta-recaptcha-feed@Release feed in Azure Artifacts](http://bj-tfs:8080/tfs/DefaultCollection/_apis/public/Packaging/Feeds/43088a81-ed89-4f08-bdd2-510978b78c59@8920759d-f5d5-4f76-9d18-e45ecb83ac24/Packages/4cd6cf18-61d2-4aed-bc87-2445872b9017/Badge)](http://bj-tfs:8080/tfs/DefaultCollection/Harta-Recaptcha/_packaging?_a=package&feed=43088a81-ed89-4f08-bdd2-510978b78c59%408920759d-f5d5-4f76-9d18-e45ecb83ac24&package=4cd6cf18-61d2-4aed-bc87-2445872b9017&preferRelease=true)
 [![Build Status](http://bj-tfs:8080/tfs/DefaultCollection/Harta-Recaptcha/_apis/build/status/harta-recaptcha-ci?branchName=master)](http://bj-tfs:8080/tfs/DefaultCollection/Harta-Recaptcha/_build/latest?definitionId=4&branchName=master)
 
 Google reCAPTCHA V2 wrapper for the ASP.NET Web Forms (.NET Framework>4.0) with ***online/offline detection*** capabilities.
