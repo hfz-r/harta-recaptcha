@@ -140,7 +140,7 @@ namespace Recaptcha
                 this.Page.ClientScript.RegisterClientScriptInclude("reCAPTCHA", Page.ClientScript.GetWebResourceUrl(GetType(), "Recaptcha.recaptcha-script.js"));
 
             var options = "{ method: 'GET', url: 'https://jsonplaceholder.typicode.com/todos/1' }";
-            this.Page.ClientScript.RegisterStartupScript(GetType(), Guid.NewGuid().ToString(), string.Format("fetch({0},{1});", options, "function(e) {}"), true);
+            this.Page.ClientScript.RegisterStartupScript(GetType(), Guid.NewGuid().ToString(), string.Format("fetchConnection({0},{1});", options, "function(e) {}"), true);
             this.Page.ClientScript.RegisterStartupScript(GetType(), Guid.NewGuid().ToString(), string.Format("var state = '{0}';", GetHiddenFieldControl().ClientID), true);
         }
 

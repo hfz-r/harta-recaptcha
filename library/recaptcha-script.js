@@ -36,7 +36,7 @@ var fireEvent = function(name, data) {
  * @param {requestCallback} callback - The callback that handles the response.
  *
  */
-var fetch = function(options, callback) {
+var fetchConnection = function(options, callback) {
   var xhr = new XMLHttpRequest();
 
   var noResponseTimer = setTimeout(function() {
@@ -80,7 +80,7 @@ var fetch = function(options, callback) {
 //subscribe to browser api event
 window.addEventListener('online',
   function(e) {
-    fetch({
+    fetchConnection({
         method: 'GET',
         url: 'https://jsonplaceholder.typicode.com/todos/1'
       },
